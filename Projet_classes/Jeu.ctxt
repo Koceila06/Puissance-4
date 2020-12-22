@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Jeu
+comment1.params=j1\ j2\ g\ max
+comment1.target=Jeu(Joueur,\ Joueur,\ Grille,\ int)
+comment2.params=g\ colonne\ j
+comment2.target=boolean\ Jouer(Grille,\ int,\ Joueur)
+comment3.params=g\ j
+comment3.target=void\ demandeEtJoue(Grille,\ Joueur)
+comment4.params=g\ ligneDepart\ colonneDepart\ dirctLigne\ dirColonne
+comment4.target=int\ Compte(Grille,\ int,\ int,\ int,\ int)
+comment5.params=g\ j\ Max
+comment5.target=boolean\ Gagnant(Grille,\ Joueur,\ int)
+comment6.params=g
+comment6.target=boolean\ Pleine(Grille)
+comment7.params=args
+comment7.target=void\ main(java.lang.String[])
+numComments=8
