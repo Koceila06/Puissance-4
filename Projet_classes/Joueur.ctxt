@@ -1,9 +1,0 @@
-#BlueJ class context
-comment0.target=Joueur
-comment1.params=nom\ pions\ t
-comment1.target=Joueur(java.lang.String,\ int,\ Case)
-comment2.params=
-comment2.target=Case\ getType()
-comment3.params=
-comment3.target=java.lang.String\ getNom()
-numComments=4
