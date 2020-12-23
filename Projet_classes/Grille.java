@@ -5,7 +5,8 @@ class Grille {
     //colonnes,lignes et nombre de pions :
     private int L;
     private int C;
-
+    public int getL(){return L; }
+    public int getC () {return C;}
 
     private int nb_pions;
 
