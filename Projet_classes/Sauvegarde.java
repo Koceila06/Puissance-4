@@ -5,9 +5,9 @@ import java.io.IOException;
  
 
 class Sauvegarde {
-    public static void Save(Grille g){
+    public static void Save(Grille g,String nom){
         try {
-            FileOutputStream fichier = new FileOutputStream("C:\\TP7\\Save.txt");
+            FileOutputStream fichier = new FileOutputStream("C:\\TP7\\"+nom+".txt");
 
  
 

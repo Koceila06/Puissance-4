@@ -1,9 +1,7 @@
 import java.util.Scanner;
+import java.io.Serializable ;    
+class Jeu implements Serializable {
 
-
-
-class Jeu {
-   
     private  int Max;
     //Max est le nombre de coup a aligner pour gagner
     private Joueur j1;
@@ -45,7 +43,7 @@ class Jeu {
         boolean valide ;
         // On commence par d'abord lire le nombre et puis verifier sa validité
         do {
-            System.out.println(j.getNom()+ " : entrez le numéro de colonne");
+            System.out.println(j.getNom()+ " : Entrez un numéro d'une colonne ");
             int colonne = s.nextInt();
             // Pour les joueur ,la premiere case de la  grille du jeu commence par 1.
             //Mais les indince en java commence par 0 , donc on soustrait "1" du nombre entré.
@@ -106,43 +104,82 @@ class Jeu {
     }
     // Une methode qui teste si la grille est pleine 
     public static boolean Pleine(Grille g){
+       
         //Si on trouve une case VIDE sur la premiere ligne ,la grille n'est pas pleine
         //On utilise une boucle for each 
         for(Case courant :g.getGrille()[0]){
             if (courant.equals(Case.VIDE)){return false ;}
 
         }
+    
         return true;
-
+   
     }
-
-    public static void main (String [] args){
+public static void main (String [] args){
         Grille grille = new Grille(6,7);
         grille.Initialiser(grille);
-        Joueur j1 = new Joueur("Koceila",21,Case.X);
-        Joueur j2 = new Joueur("Hamza",21,Case.O);
-
+        Joueur j1 = new Joueur("Koceila",Case.X);
+        Joueur j2 = new Joueur("Hamza",Case.O);
+        Scanner s = new Scanner(System.in);
         Jeu partie = new Jeu(j1,j2,grille,4);
+
         boolean gagne ;
         //Une variable temporaire pour alterner les joueurs
-        Joueur j = j1;
-        do {
-            demandeEtJoue(grille,j);
-            grille.Afficher(grille);
-            gagne = Gagnant(grille,j,4);
-            //On alterne les joueur 
-            if(j.equals(j1)){
-                j=j2;
-            } else { j= j1;}
+        Joueur j=j1; ;
+        Grille tmp  = Charge.load("SAVE");
+        if (tmp != null){
+        
+        if (!(Pleine(tmp) || Gagnant(tmp,j1,4) || Gagnant(tmp,j2,4)) ){
 
-        } while(!gagne && !Pleine(grille));
-        if (gagne){
-            //On verifie le joueur gagnant sachant qu'on a fait une alternance aprés la victoire du gagnant 
-            if(j.equals(j1)){System.out.println("VICTOIRE DE " + j2.getNom());} else {
-                {System.out.println("VICTOIRE DE " + j1.getNom());}
+            System.out.println("Voulez vous Continuer La Partie Précédente.");
+            System.out.println("1. Continuer");
+            System.out.println("2. Nouvelle partie");
+            int nbr= s.nextInt();
+            while( nbr!=1 && nbr != 2){
+
+                System.out.println("Entrer un nombre valide");
+                nbr=s.nextInt();
+            }
+            if (nbr==1) {
+                grille=tmp;
+                int cpt_j1=0;
+                int cpt_j2=0;
+                System.out.print(tmp.getL()+"*"+tmp.getC()+"  ");
+                for (int l = tmp.getGrille().length-1;l>=0; l--){
+                    for(int c =0 ; c < tmp.getGrille()[l].length;c++ ) {
+                        if (tmp.getGrille()[l][c]==Case.X){System.out.print("X");cpt_j1=cpt_j1+1;}
+                        else {if (tmp.getGrille()[l][c]==Case.O)
+                            {System.out.print("O");cpt_j2=cpt_j2+1;} }
+                    }
+                    System.out.print(" | ");
+                }
+                if (cpt_j1 >cpt_j2) {j=j2;} else {j=j1;}
+                grille.Afficher(grille);
             }
 
         }
-        else {System.out.println("NULLLLL");}
+    }
+
+        do {
+
+            demandeEtJoue(grille,j);
+
+            grille.Afficher(grille);
+            gagne = Gagnant(grille,j,4);
+            Sauvegarde.Save(grille,"SAVE");
+            //On alterne les joueur 
+            if(j.equals(j1)){
+
+                j=j2;
+            } else { j= j1;  }
+
+        } while(!gagne && !Pleine(grille));
+        if (gagne){
+
+            //On verifie le joueur gagnant sachant qu'on a fait une alternance aprés la victoire du gagnant 
+            if(j.equals(j1)){System.out.println("VICTOIRE DE " + j2.getNom());} else 
+            {System.out.println("VICTOIRE DE " + j1.getNom());} }
+
+        else { if (Pleine(grille)) {System.out.println("NULLLLL");} }
     }
 }

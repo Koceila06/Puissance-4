@@ -4,26 +4,20 @@ import java.io.ObjectInputStream ;
  
 
 class Charge{
-    public static Grille load( ){
+    public static Grille load( String nom){
         Grille tmp=null;
+       
         try {
-            FileInputStream ios= new FileInputStream ("C:\\TP7\\Save.txt");
+            FileInputStream ios= new FileInputStream ("C:\\TP7\\"+nom+".txt");
             ObjectInputStream fils= new ObjectInputStream(ios);
+           
             tmp = (Grille) fils.readObject();
             fils.close();
-            System.out.print(tmp.getL()+"*"+tmp.getC()+"  ");
-            for (int l = tmp.getGrille().length-1;l>=0; l--){
-              for(int c =0 ; c < tmp.getGrille()[l].length;c++ ) {
-                  if (tmp.getGrille()[l][c]==Case.X){System.out.print("X");}
-                  else {if (tmp.getGrille()[l][c]==Case.O)
-                      {System.out.print("O");} }
-              }
-              System.out.print(" | ");
-            }
+          
             
         }
         catch(Exception e ) {
-            e.getMessage();
+            System.out.print('x');
 
  
 
