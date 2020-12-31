@@ -7,7 +7,7 @@ import java.io.IOException;
 class Sauvegarde {
     public static void Save(Grille g,String nom){
         try {
-            FileOutputStream fichier = new FileOutputStream("C:\\TP7\\"+nom+".txt");
+            FileOutputStream fichier = new FileOutputStream("C:\\Users\\salah\\Desktop\\projet\\Projet_classes"+nom+".txt");
 
  
 
@@ -22,7 +22,7 @@ class Sauvegarde {
 
  
 
-        catch (IOException e){
+        catch (Exception e){
             e.printStackTrace();
         }
     }

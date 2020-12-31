@@ -74,7 +74,7 @@ class Grille {
         }
         System.out.println("==");
     }
-
+ 
     public static  void  setCase_grille(Grille g, int ligne ,int colonne,Case c ){
         g.grille [ligne][colonne]=c;
 

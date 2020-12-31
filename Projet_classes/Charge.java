@@ -8,7 +8,7 @@ class Charge{
         Grille tmp=null;
        
         try {
-            FileInputStream ios= new FileInputStream ("C:\\TP7\\"+nom+".txt");
+            FileInputStream ios= new FileInputStream ("C:\\Users\\salah\\Desktop\\projet\\Projet_classes"+nom+".txt");
             ObjectInputStream fils= new ObjectInputStream(ios);
            
             tmp = (Grille) fils.readObject();
