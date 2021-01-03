@@ -135,11 +135,26 @@ class Jeu implements Serializable {
     }
 
     public static void main (String [] args){
-        Grille grille = new Grille(6,7);
+        Scanner s = new Scanner(System.in) ;
+        int L , C ;
+        do{
+        System.out.println("Entrez le nombre de Ligne") ;
+        L = s.nextInt() ;
+        System.out.println("Entrez le nombre de Colonne") ;
+        C = s.nextInt() ;
+        if (L < 4) {System.out.println ("Ligne doit etre superieure a 4");
+         System.out.println("Entrez le nombre de Ligne") ;
+        L = s.nextInt() ;
+        }
+        if (C < 4) {System.out.println ("Colonne doit etre superieure a 4");
+        System.out.println("Entrez le nombre de Colonne") ;
+        C = s.nextInt() ;}
+    }while(L < 4 || C < 4);
+        Grille grille = new Grille(L,C);
         grille.Initialiser(grille);
         Joueur j1 = new Joueur("Koceila",Case.X);
         Joueur j2 = new Joueur("Hamza",Case.O);
-        Scanner s = new Scanner(System.in);
+       
         Jeu partie = new Jeu(j1,j2,grille,4);
 
         boolean gagne ;

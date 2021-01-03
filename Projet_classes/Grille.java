@@ -1,3 +1,6 @@
+/***
+ * Classe Grille represente le plateau du jeu 
+ */
 class Grille {
     //Le plateau vertical de jeu:
     private Case [] [] grille;
@@ -10,7 +13,10 @@ class Grille {
 
     private int nb_pions;
 
-
+/***
+ * Constructeur de la classe, il prend en parametre le nombre de Ligne et de Colonne de la grille. 
+ * Ensuite On cree le tableau 2D grille avec ces parametres.  
+ */
     Grille(int l, int c  ){
         this.L=l;
         this.C=c;
@@ -20,6 +26,9 @@ class Grille {
 
     }
 
+/**
+ * La methode Initialise : initialise toutes les casses de la grille a vide.
+   */
 
     public static void  Initialiser( Grille g){
         for(int i=0;i<g.grille.length;i++){
@@ -37,11 +46,19 @@ class Grille {
 
     }
 
-
+/**
+ * la methode Afficher : prend @param Grille g et l'affiche 
+ */
     public static void Afficher(Grille g){
         //laisser d'espace entre les les lignes 
         System.out.println();
         // afficher avec deux boucles for each  
+         System.out.print(" ");
+         for(int i = 1; i<= g.grille[0].length*2+1;i++){
+            System.out.print("_");
+
+        }
+         System.out.println();
         for(Case [] l :g.grille){
             System.out.print(" |");
             for(Case c : l){
@@ -67,12 +84,17 @@ class Grille {
             }
             System.out.println();
         }
-        System.out.print('=');
+        System.out.print(" ");
+        for(int i = 1; i<= g.grille[0].length*2+1;i++){
+            System.out.print("-");
+        }
+        System.out.println();
+        System.out.print(" ");
         for(int i = 1; i<= g.grille[0].length;i++){
             System.out.print("=" + i);
 
         }
-        System.out.println("==");
+        System.out.println("=");
     }
  
     public static  void  setCase_grille(Grille g, int ligne ,int colonne,Case c ){
