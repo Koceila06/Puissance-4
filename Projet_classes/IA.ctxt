@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=IA
+comment1.params=j
+comment1.target=Joueur\ inverse(Joueur)
+comment2.params=racine\ j\ profendeur
+comment2.target=Noeud\ Const_Arbre(Noeud,\ Joueur,\ int)
+comment3.params=grille\ profendeur\ j
+comment3.target=Arbre\ Const_Arbre_Du_Jeu(Grille,\ int,\ Joueur)
+comment4.params=grille\ j
+comment4.target=int\ Chois_Colonne(Grille,\ Joueur)
+comment5.params=fils
+comment5.target=int\ Max(java.util.ArrayList)
+comment6.params=fils
+comment6.target=int\ Min(java.util.ArrayList)
+comment7.params=grille
+comment7.target=int\ Evaluat(Grille)
+numComments=8

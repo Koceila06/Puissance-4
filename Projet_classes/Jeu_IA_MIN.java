@@ -1,24 +1,13 @@
+
 import java.io.Serializable ; 
 import java.util.Scanner;
 import java.util.Random ;
  
-public class Jeu_IA implements Serializable {
+public class Jeu_IA_MIN implements Serializable {
 
-    public static boolean Pleine(Grille g){
-        //Si on trouve une case VIDE sur la premiere ligne ,la grille n'est pas pleine
-        //On utilise une boucle for each 
-        Case[] tmp = null ;
-        for (int i = 0; i< g.getGrille()[0].length ; i++ )
-        {  tmp [i] = g.getGrille()[0][i] ;
-        }
-        for(Case courant :tmp){
-            if (courant.equals(Case.VIDE)){return false ;}
-        }
-        return true;
-
-    }
-
-    public static void demandeEtJoue(Grille g, Joueur j){
+    
+   
+    public static void demandeEtJoue2(Grille g, Joueur j){
         Scanner s = new Scanner(System.in);
         boolean valide ;
         int colonne ;
@@ -26,14 +15,15 @@ public class Jeu_IA implements Serializable {
         // On commence par d'abord lire le nombre et puis verifier sa validité
         do {
             System.out.println(j.getNom()+ " : entrez le numéro de colonne");
-            if (j.getNom().equals("IA")){colonne =r.nextInt(9)+1;}
-
+           // r.nextInt(8+1-1)+1
+            if (j.getNom().equals("IA")){colonne = IA.Chois_Colonne(g,j); System.out.println(colonne);}
             else {colonne = s.nextInt();}
             // Pour les joueur ,la premiere case de la  grille du jeu commence par 1.
             //Mais les indince en java commence par 0 , donc on soustrait "1" du nombre entré.
             colonne--;
             valide=Jeu.Jouer(g,colonne,j);
             if (!valide){System.out.println(" le coup n'est valide");}
+
         }
         while(!valide);}
 
@@ -41,8 +31,8 @@ public class Jeu_IA implements Serializable {
 
     public static void main (String [] args){
         Grille grille = new Grille(6,7);
-        Joueur j1 = new Joueur("Humain",Case.X);
-        Joueur j2 = new Joueur("IA",Case.O);
+        Joueur j1 = new Joueur("Humain",Case.X,false);
+        Joueur j2 = new Joueur("IA",Case.O,true);
         Grille.Initialiser(grille);
 
         Scanner s = new Scanner(System.in);
@@ -50,10 +40,11 @@ public class Jeu_IA implements Serializable {
 
         boolean gagne ;
         //Une variable temporaire pour alterner les joueurs
-        Joueur j=j1; 
-        Grille tmp  = Charge.load("Save_IA1");
-        if (tmp != null) {
-        if (!(Pleine(tmp) || Jeu.Gagnant(tmp,j1,4) || Jeu.Gagnant(tmp,j2,4)) ){
+        Joueur j=j2; ;
+        Grille tmp  = Charge.load("Save_IA");
+        if (tmp != null){
+
+        if (!(Jeu.Pleine(tmp) || Jeu.Gagnant(tmp,j1,4) || Jeu.Gagnant(tmp,j2,4)) ){
 
             System.out.println("Voulez vous Continuer La Partie Précédente.");
             System.out.println("1. Continuer");
@@ -73,7 +64,7 @@ public class Jeu_IA implements Serializable {
                     for(int c =0 ; c < tmp.getGrille()[l].length;c++ ) {
                         if (tmp.getGrille()[l][c]==Case.X){System.out.print("X");cpt_j1=cpt_j1+1;}
                         else {if (tmp.getGrille()[l][c]==Case.O)
-                            {System.out.print("O");cpt_j2=cpt_j2+1;}}
+                            {System.out.print("O");cpt_j2=cpt_j2+1;} }
                     }
                     System.out.print(" | ");
                 }
@@ -81,27 +72,28 @@ public class Jeu_IA implements Serializable {
                 grille.Afficher(grille);
             }
 
-        }}
+        }
+    }
 
         do {
-            demandeEtJoue(grille,j);
+            demandeEtJoue2(grille,j);
             grille.Afficher(grille);
             gagne = Jeu.Gagnant(grille,j,4);
-            Sauvegarde.Save(grille,"Save_IA1");
+            Sauvegarde.Save(grille,"Save_IA");
             //On alterne les joueur 
             if(j.equals(j1)){
 
                 j=j2;
-            }else {j= j1;  }
-        }while(!gagne && !Jeu.Pleine(grille));
+            } else { j= j1;  }
+
+        } while(!gagne && !Jeu.Pleine(grille));
         if (gagne){
 
             //On verifie le joueur gagnant sachant qu'on a fait une alternance aprés la victoire du gagnant 
-            if(j.equals(j1)){System.out.println("VICTOIRE DE " + j2.getNom());}else 
-            {System.out.println("VICTOIRE DE " + j1.getNom());}}
+            if(j.equals(j1)){System.out.println("VICTOIRE DE " + j2.getNom());} else 
+            {System.out.println("VICTOIRE DE " + j1.getNom());} }
 
-        else {if (Jeu.Pleine(grille)) {System.out.println("MATCH NULL");}}
+        else { if (Jeu.Pleine(grille)) {System.out.println("NULLLLL");} }
     }
 }
-
 

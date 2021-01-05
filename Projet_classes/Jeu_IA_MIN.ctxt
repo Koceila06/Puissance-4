@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Jeu_IA_MIN
+comment1.params=g\ j
+comment1.target=void\ demandeEtJoue2(Grille,\ Joueur)
+comment2.params=args
+comment2.target=void\ main(java.lang.String[])
+numComments=3

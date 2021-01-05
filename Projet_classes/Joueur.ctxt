@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Joueur
+comment0.text=\r\n\ Repr\u00E9sente\ un\ joueur\ \r\n
+comment1.params=nom\ t\ ia
+comment1.target=Joueur(java.lang.String,\ Case,\ boolean)
+comment1.text=\r\n\ Un\ constructeur\ surcharg\u00E9\ \r\n\ @param\ nom\ Le\ nom\ du\ joueur\ \r\n\ @param\ t\ La\ couleur/caractere\ du\ joueur\ \r\n
+comment2.params=nom\ t
+comment2.target=Joueur(java.lang.String,\ Case)
+comment3.params=
+comment3.target=Case\ getType()
+comment3.text=\r\n\ Retourne\ la\ couleur/caractere\ du\ joueur\r\n
+comment4.params=
+comment4.target=java.lang.String\ getNom()
+comment4.text=\r\n\ Retourne\ le\ nom\ du\ joueur\ \r\n
+comment5.params=
+comment5.target=boolean\ get_IA()
+numComments=6
