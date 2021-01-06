@@ -134,7 +134,7 @@ class Jeu implements Serializable {
 
     }
 
-    public static void main (String [] args){
+    public static void Play (){
         Scanner s = new Scanner(System.in) ;
         int L , C ;
         do{
@@ -211,9 +211,9 @@ class Jeu implements Serializable {
         if (gagne){
 
             //On verifie le joueur gagnant sachant qu'on a fait une alternance aprés la victoire du gagnant 
-            if(j.equals(j1)){System.out.println("VICTOIRE DE " + j2.getNom());} else 
+            if(j.equals(j1)){System.out.println("  VICTOIRE DE " + j2.getNom());} else 
             {System.out.println("VICTOIRE DE " + j1.getNom());} }
 
-        else { if (Pleine(grille)) {System.out.println("NULLLLL");} }
+        else { if (Pleine(grille)) {System.out.println("  MATCH NULL");} }
     }
 }

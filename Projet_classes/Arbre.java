@@ -1,4 +1,4 @@
-class Arbre{
+ class Arbre{
 Noeud racine; 
 Arbre(Noeud root){
 this.racine=root;

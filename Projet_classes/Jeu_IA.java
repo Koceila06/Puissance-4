@@ -39,8 +39,23 @@ public class Jeu_IA implements Serializable {
 
     // Le coup est valide : on affiche la grille!
 
-    public static void main (String [] args){
-        Grille grille = new Grille(6,7);
+    public static void Play ( ){
+           Scanner k = new Scanner(System.in) ;
+        int L , C ;
+        do{
+        System.out.println("Entrez le nombre de Ligne") ;
+        L = k.nextInt() ;
+        System.out.println("Entrez le nombre de Colonne") ;
+        C = k.nextInt() ;
+        if (L < 4) {System.out.println ("Ligne doit etre superieure a 4");
+         System.out.println("Entrez le nombre de Ligne") ;
+        L = k.nextInt() ;
+        }
+        if (C < 4) {System.out.println ("Colonne doit etre superieure a 4");
+        System.out.println("Entrez le nombre de Colonne") ;
+        C = k.nextInt() ;}
+    }while(L < 4 || C < 4);
+        Grille grille = new Grille(L,C);
         Joueur j1 = new Joueur("Humain",Case.X);
         Joueur j2 = new Joueur("IA",Case.O);
         Grille.Initialiser(grille);
@@ -97,10 +112,10 @@ public class Jeu_IA implements Serializable {
         if (gagne){
 
             //On verifie le joueur gagnant sachant qu'on a fait une alternance aprés la victoire du gagnant 
-            if(j.equals(j1)){System.out.println("VICTOIRE DE " + j2.getNom());}else 
+            if(j.equals(j1)){System.out.println("  VICTOIRE DE " + j2.getNom());}else 
             {System.out.println("VICTOIRE DE " + j1.getNom());}}
 
-        else {if (Jeu.Pleine(grille)) {System.out.println("MATCH NULL");}}
+        else {if (Jeu.Pleine(grille)) {System.out.println("  MATCH NULL");}}
     }
 }
 

@@ -53,41 +53,54 @@ public int getC(){return this.C;}
 
     }
     /**
-     *  Affiche la grille passée en parametre 
-     * @param g La grille a afficher 
-     */
-
+ * la methode Afficher : prend @param Grille g et l'affiche 
+ */
     public static void Afficher(Grille g){
         //laisser d'espace entre les les lignes 
         System.out.println();
         // afficher avec deux boucles for each  
+         System.out.print(" ");
+         for(int i = 1; i<= g.grille[0].length*2+1;i++){
+            System.out.print("_");
+
+        }
+         System.out.println();
         for(Case [] l :g.grille){
             System.out.print(" |");
             for(Case c : l){
-                
+
                 if(c.equals(Case.VIDE)){
                     System.out.print('.');
+
 
                 } else { if (c.equals(Case.X)){
                         System.out.print('X');}
 
+
                     else { if (c.equals(Case.O)){
                             System.out.print('O');
+
 
                         }
                     }
                 }
                 System.out.print('|');
 
+
             }
             System.out.println();
         }
-        System.out.print('=');
-        for(int i = 1; i<= g.grille[0].length;i++){
-        System.out.print("=" + i);
-        
+        System.out.print(" ");
+        for(int i = 1; i<= g.grille[0].length*2+1;i++){
+            System.out.print("-");
         }
-        System.out.println("==");
+        System.out.println();
+        System.out.print(" ");
+        for(int i = 1; i<= g.grille[0].length;i++){
+            System.out.print("=" + i);
+
+        }
+        System.out.println("=");
     }
     /**
      * Changer une case de la grille

@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Puissance4
+comment0.text=\r\n\ class\ Puissance4\ \:\ represente\ notre\ jeux.\ Elle\ propose\ une\ partie\ "jvj"\ ou\ "jvsIA"\ avec\ le\ choix\ de\ la\ difficult\u00E9.\ \r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+numComments=2
