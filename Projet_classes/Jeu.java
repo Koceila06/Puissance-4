@@ -133,13 +133,12 @@ class Jeu implements Serializable {
         return true;
 
     }
-<<<<<<< HEAD
 
     public static void Play (){
-=======
+
  
-    public static void main (String [] args){
->>>>>>> 4c659e376a514638221f36d5428d0c4d39d94712
+ 
+
         Scanner s = new Scanner(System.in) ;
         int L , C ;
         do{

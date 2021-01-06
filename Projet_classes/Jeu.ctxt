@@ -14,11 +14,6 @@ comment6.params=g\ j\ Max
 comment6.target=boolean\ Gagnant(Grille,\ Joueur,\ int)
 comment7.params=g
 comment7.target=boolean\ Pleine(Grille)
-<<<<<<< HEAD
 comment8.params=
 comment8.target=void\ Play()
-=======
-comment8.params=args
-comment8.target=void\ main(java.lang.String[])
->>>>>>> 4c659e376a514638221f36d5428d0c4d39d94712
 numComments=9
