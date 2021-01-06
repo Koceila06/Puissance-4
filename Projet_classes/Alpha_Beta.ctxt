@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.target=Alpha_Beta
-comment0.text=\r\n\ classe\ Resolution,\ elle\ contient\ l'algo\ alphabeta\ \r\n\ @author\ emmanuel\ adam\r\n
-comment1.params=s\ j\ alpha\ beta
-comment1.target=int\ alphaBeta(Noeud,\ Joueur,\ int,\ int)
-comment1.text=fonction\ alphabeta,\ determine\ la\ valeur\ du\ noeud/\ de\ la\ situation\ s\r\n\ pour\ recuperer\ la\ situation\ a\ prendre,\ balayer\ ensuite\ la\ liste\ des\ successeurs\ de\ s\ \r\n\ et\ prendre\ la\ premiere\ situation\ ayant\ la\ meme\ estimation\r\n\ @param\ s\ situation,\ etat\ \r\n\ @param\ alpha\ -9999\ borne\ minimum\r\n\ @param\ beta\ 9999\ borne\ maximum\r\n@return\ estimation\ de\ la\ situation\ s\ en\ fonction\ du\ jeu\ de\ l'adversaire
-numComments=2
