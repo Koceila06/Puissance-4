@@ -7,7 +7,6 @@ class IA{
 
     public static Noeud Const_Arbre(Noeud racine,Joueur j,int profendeur){
 
-
                
         if (profendeur!=1){
             //System.out.println();
@@ -22,19 +21,15 @@ class IA{
                     //si Ia appeler min de children sinon max de children 
                     Noeud node= new Noeud(copy);
                     Grille copy2 =Grille.copy(racine.getGrille_Noeud());
-                    
+
                     if(Jeu.Gagnant(copy,j,4)&& profendeur==5){if(j.get_IA())node.setScore(101000);} else {
-                    if (Jeu.Jouer(copy2,i,inverse(j))){
-                    if(Jeu.Gagnant(copy2,inverse(j),4)&& profendeur==5){node.setScore(10000);}
-                     } }
+                        if (Jeu.Jouer(copy2,i,inverse(j))){
+                            if(Jeu.Gagnant(copy2,inverse(j),4)&& profendeur==5){node.setScore(10000);}
+                        } }
+
                     
                     
-                    
-                    
-                    
-                    
-                    if (!Jeu.Gagnant(copy2,j,4) && !Jeu.Gagnant(copy,j,4) ){
-                       
+                    if (!Jeu.Gagnant(copy2,inverse(j),4) && !Jeu.Gagnant(copy,j,4) ){
 
                         //on va jusqu'a la profendeur pour appeller la fonction d'evaluation
                         node=Const_Arbre(node,inverse(j),profendeur-1);
@@ -42,17 +37,16 @@ class IA{
                         if( j.get_IA()){ 
                             node.setScore(Max(node.getFils()));               //  System.out.print("max"+node.getScore());
 
-                        } else {   node.setScore(Min(node.getFils()));                //   System.out.print("min"+node.getScore());
+                        } else  {   node.setScore(Min(node.getFils()));                //   System.out.print("min"+node.getScore());
                         }
 
-                        
-                        
                         
                     }
                     // ajoute a ses fils
                     racine.Add(node);
 
-                }  // else {if (j.get_IA() && profendeur==4){Noeud node=new Noeud(copy,9999); racine.Add(node) ; } else { if(profendeur==4 && !j.get_IA()){Noeud node= new Noeud(copy,-9999);racine.Add(node); }  }}
+                } else {if(profendeur>=5) racine.Add(new Noeud (Grille.copy(racine.getGrille_Noeud()),-90000));  } 
+                // else {if (j.get_IA() && profendeur==4){Noeud node=new Noeud(copy,9999); racine.Add(node) ; } else { if(profendeur==4 && !j.get_IA()){Noeud node= new Noeud(copy,-9999);racine.Add(node); }  }}
 
             }}else {
             for(int i=0;i<7;i++){
@@ -76,7 +70,6 @@ class IA{
         return racine; 
     }
 
-
     public static  Arbre Const_Arbre_Du_Jeu(Grille grille,int profendeur,Joueur j ){
         Noeud root=new Noeud(grille,0);
         root=Const_Arbre(root,j,profendeur);
@@ -90,20 +83,20 @@ class IA{
         Arbre arb = Const_Arbre_Du_Jeu(grille,5,j);
         Noeud racine = arb.getRoot();
         for(int i=0;i<racine.getFils().size();i++){
+            Grille copy = grille.copy(grille);
             System.out.print(racine.getFils().get(i).getScore()+" ");
             if( racine.getFils().get(i).getScore()>= Score){
+
                 Score=racine.getFils().get(i).getScore();
                 //System.out.println(racine.getFils().get(i).getScore());
+
                 colonne_ajouer=i;
-
             }
-            // if( rac){
-
             // }
 
-        }
+        } 
 
-        return colonne_ajouer+1;
+        return  colonne_ajouer+1;
 
     }
     ///public static MinMax(){   

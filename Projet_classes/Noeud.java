@@ -17,6 +17,7 @@ this.score=-999999999;
 
 
 }
+public boolean getFeuille(){return this.fils==null;}
 public Grille getGrille_Noeud(){
 
 return this.grille;
