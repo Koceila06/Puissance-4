@@ -40,7 +40,7 @@ public class Jeu_IA_MIN implements Serializable {
 
         boolean gagne ;
         //Une variable temporaire pour alterner les joueurs
-        Joueur j=j2; ;
+        Joueur j=j1; ;
         Grille tmp  = Charge.load("Save_IA");
         if (tmp != null){
 
