@@ -1,9 +1,0 @@
-#BlueJ class context
-comment0.target=Jeu_IA
-comment1.params=g
-comment1.target=boolean\ Pleine(Grille)
-comment2.params=g\ j
-comment2.target=void\ demandeEtJoue(Grille,\ Joueur)
-comment3.params=args
-comment3.target=void\ main(java.lang.String[])
-numComments=4

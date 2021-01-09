@@ -1,94 +1,127 @@
 import java.util.ArrayList;
 class IA{
-    public static  Joueur inverse (Joueur j){ 
-        if (j.getType()==Case.O) { 
-            return new Joueur("a",Case.X,!j.get_IA()); }
-        else { if (j.getType()== Case.X){return new Joueur("a",Case.X,!j.get_IA());}} return null;} 
-
+    /**
+     * Construit l'Arbre du Jeu et renvoie la racine
+     * @param racine La racine de l'Arbre
+     * @param j Le joueur a qui est le tour de jouer
+     * @param profendeur La profendeur de l'arbre
+     */
     public static Noeud Const_Arbre(Noeud racine,Joueur j,int profendeur){
-
-               
+       
+        // Si on est pas arrivé a la derniere profendeur 
         if (profendeur!=1){
-            //System.out.println();
+            //On parcour les 7 colonne possible
             for(int i=0;i<7;i++){
 
+                //On fait une copie profonde pour ne pas modifier le contenue de la grille
                 Grille copy =Grille.copy(racine.getGrille_Noeud());
                 //Jouer renvoie true si elle a reussi a jouer
                 // elle verifie que la colonne n'est pas pleine et recherche la premiere case vide et joue le coup
                 if (Jeu.Jouer(copy,i,j)){   
-
-                    //creer un noeud et initalise ses fils;
-                    //si Ia appeler min de children sinon max de children 
+                    //On crée un noeud avec la Grille modifié aprés avoir jouer 
                     Noeud node= new Noeud(copy);
+                    //Une deuxieme copie pour verifier que l'adversaire ne gagnera pas du premier coup
                     Grille copy2 =Grille.copy(racine.getGrille_Noeud());
-
-                    if(Jeu.Gagnant(copy,j,4)&& profendeur==5){if(j.get_IA())node.setScore(101000);} else {
+                    //On verifie si un des deux joueur peut gagner dés le premier coup
+                    //Si c'est le cas on Arrete la création de l'arbre 
+                    //On commence d'abord par verifier La machine ,si elle ne gagne pas on verifei l'Adversaire
+                    //Profendeur 4 pour dire que c'est le premier coup a jouer 
+                    if(Jeu.Gagnant(copy,j,4)&& profendeur==5){
+                        //On met le score a une valeur Maximale pour le choisir
+                        if(j.get_IA()==true)node.setScore(101000);                                 
+                    } 
+                    else {
                         if (Jeu.Jouer(copy2,i,inverse(j))){
-                            if(Jeu.Gagnant(copy2,inverse(j),4)&& profendeur==5){node.setScore(10000);}
-                        } }
-
-                    
-                    
-                    if (!Jeu.Gagnant(copy2,inverse(j),4) && !Jeu.Gagnant(copy,j,4) ){
-
+                            // On met le score a une valeur Maximale pour le choisir
+                            if(Jeu.Gagnant(copy2,inverse(j),4)&& profendeur==5){node.setScore(10000); 
+                            }
+                        }    
+                    }                    
+                    // Si aucun des deux joueurs ne peut gagner,On Crée L'arbre avec la reccurence 
+                    if (Jeu.Gagnant(copy2,inverse(j),4)==false && Jeu.Gagnant(copy,j,4)==false ){
                         //on va jusqu'a la profendeur pour appeller la fonction d'evaluation
                         node=Const_Arbre(node,inverse(j),profendeur-1);
+                        //On initalise le Score avec le Max de ses fils si c'est la machine 
+                        //le Score de la profendeur sera remonter
+                        if( j.get_IA()==true){ 
+                            node.setScore(Max(node.getFils())); 
 
-                        if( j.get_IA()){ 
-                            node.setScore(Max(node.getFils()));               //  System.out.print("max"+node.getScore());
+                        } else  {  
+                            node.setScore(Min(node.getFils()));               
 
-                        } else  {   node.setScore(Min(node.getFils()));                //   System.out.print("min"+node.getScore());
                         }
 
-                        
                     }
-                    // ajoute a ses fils
-                    racine.Add(node);
+                    // Ajoute le Noeud avec son Score a la racine 
+                    //Quand on arrive a la profendeur la racine sera egale au pere des Noeud evalué 
+                    racine.Add_Fils(node);
 
-                } else {if(profendeur>=5) racine.Add(new Noeud (Grille.copy(racine.getGrille_Noeud()),-90000));  } 
-                // else {if (j.get_IA() && profendeur==4){Noeud node=new Noeud(copy,9999); racine.Add(node) ; } else { if(profendeur==4 && !j.get_IA()){Noeud node= new Noeud(copy,-9999);racine.Add(node); }  }}
+                } else {
+                    //si la colonne est pleine
+                    if(profendeur==5)
+                        racine.Add_Fils(new Noeud (Grille.copy(racine.getGrille_Noeud()),-90000));
+                    //si la colonne est pleine a partir d'une certaine profendeur 
+                    //donc c'est une feuille;on appelle la fonction d'evaluation
+                    else {racine.Add_Fils(new Noeud (Grille.copy(racine.getGrille_Noeud()),Evaluat(racine.getGrille_Noeud())));}  } 
 
-            }}else {
+            }
+        }
+        else {
+            // Arriver a la profendeur
             for(int i=0;i<7;i++){
-                // arriver a la profendeur 
                 Grille copy =Grille.copy(racine.getGrille_Noeud());
                 //Jouer renvoie true si elle a reussi a jouer
                 // elle verifie que la colonne n'est pas pleine et recherche la premiere case vide et joue le coup
                 if (Jeu.Jouer(copy,i,j)){
-
+                    // On evalue les 7 possibilités
+                    //Pour cela on lui passe la fonction d'evaluation qui renverrai son score
                     Noeud node= new Noeud(copy, Evaluat(copy));            
-                    //System.out.print(node.getScore()+"|");
-
-                    racine.Add(node);
+                    //ajoute le noeud evaluer aux fils du parent
+                    racine.Add_Fils(node);
 
                 }
-                //profendeur == 0 ,appeler fonction d'evaluition pour lui mm
 
             }
-
         }
         return racine; 
     }
 
-    public static  Arbre Const_Arbre_Du_Jeu(Grille grille,int profendeur,Joueur j ){
+    /**
+     * Renvoie l'arbre du jeu
+     * @param grille La grille initialle
+     * @param profendeur La profendeur de l'arbre
+     * @param joueur Le joueur a jouer
+     */
+
+    public static  Arbre Const_Arbre_Du_Jeu(Grille grille,int profendeur,Joueur joueur ){
+        //On appelle la méthode précédente pour renvoyé la racinde de l'arbre
         Noeud root=new Noeud(grille,0);
-        root=Const_Arbre(root,j,profendeur);
+        root=Const_Arbre(root,joueur,profendeur);
+        //On retourne l'arbre du jeu
         return new Arbre(root);
 
     }
 
+    /**
+     * Renvoi la Colonne a jouer
+     * @param grille La grille initialle
+     * @Joueur le joueur a qui est le tour 
+     * @return retourne la colonne a jouer
+     */
     public static int Chois_Colonne(Grille grille,Joueur j ){
-        int Score=-99999999;
+        //On initialise le score a une valeur qui ne sera jamais atteinte 
+        int Score=-999999999;
         int colonne_ajouer=1;
+        //On construit l'arbre du jeu
         Arbre arb = Const_Arbre_Du_Jeu(grille,5,j);
+        //On récupere sa racine 
         Noeud racine = arb.getRoot();
         for(int i=0;i<racine.getFils().size();i++){
-            Grille copy = grille.copy(grille);
-            System.out.print(racine.getFils().get(i).getScore()+" ");
+            //On affiche le score finale de chaque colonne pour verifier que le programme marche bien
             if( racine.getFils().get(i).getScore()>= Score){
-
+                //On choisi le meilleur Score
                 Score=racine.getFils().get(i).getScore();
-                //System.out.println(racine.getFils().get(i).getScore());
+                //On met a jour la colonne a jouer si le score est superiere au précédent
 
                 colonne_ajouer=i;
             }
@@ -99,9 +132,11 @@ class IA{
         return  colonne_ajouer+1;
 
     }
-    ///public static MinMax(){   
 
-    //}
+    /**
+     * Prends une liste de noeud et renvoiecelui qui contient le score le plus elevé
+     * @param fils La liste des fils 
+     */
     public static int Max(ArrayList<Noeud> fils){
         int max=-999999999;
 
@@ -113,6 +148,10 @@ class IA{
         return max;
     }
 
+    /**
+     * Prends une liste de noeud et renvoiecelui qui contient le score le moins elevé
+     * @param fils La liste des fils 
+     */
     public static int Min(ArrayList<Noeud> fils){
 
         int min=9999999;
@@ -124,14 +163,21 @@ class IA{
         return min;
     }
 
+    /**
+     * La fonction d'evaluation
+     * @param grille La grille a evaluer
+     */
+
     public static int Evaluat(Grille grille){
+        //On donne un score pour chaque alignement
+        //On prend toujours La machine comme un "O" et le Joueur comme un "X"
         int fourInLine = 1000;
         int threeInLine = 16;
         int twoInLine =6;
         int Xlines = 0;
         int Olines = 0;
 
-        // Checking rows
+        // Verifier les lignes
         for(int i = 0; i < 6; i++){
             for(int j = 0; j < 3; j++){ 
                 int s = 0;
@@ -175,7 +221,7 @@ class IA{
             }
         }
 
-        // Checking columns
+        // Verifier colonne
         for(int j = 0; j < 7; j++){
             for(int i = 0; i < 3; i++){
                 int s = 0;
@@ -195,8 +241,7 @@ class IA{
                             }
                             else if(s == 3){
                                 Xlines = Xlines + fourInLine;
-                            } //else if(s==4){
-                            //  Xlines = Xlines+ fourInLine*2;}
+                            } 
                         }
                         else if(grille.getGrille()[i + count][j] == Case.O){
                             if(s == 1){
@@ -219,7 +264,7 @@ class IA{
             }
         }
 
-        // Checking diagonals to right
+        // Verifier diagonale droite
         for(int i = 3; i < 6; i++){
             for(int j = 0; j < 3; j++){
                 int s = 0;
@@ -263,7 +308,7 @@ class IA{
             }
         }
 
-        // Checking diagonals to left
+        // Verifier diagonale gauche
         for(int i = 3; i < 6; i++){
             for(int j = 3; j < 7; j++){
                 int s = 0;
@@ -308,5 +353,13 @@ class IA{
 
         return Olines - Xlines;
     }
+    /**
+     * Inverse le Joueur courant 
+     * @param j Le joueur a inverser
+     */
+    public static  Joueur inverse (Joueur j){ 
+        if (j.getType()==Case.O) { 
+            return new Joueur("a",Case.X); }
+        else { if (j.getType()== Case.X){return new Joueur("o",Case.O);}} return null;} 
 
 }

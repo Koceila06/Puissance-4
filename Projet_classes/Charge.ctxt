@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=Charge
+comment0.text=\r\n\ Permet\ la\ Charge\ de\ Partie\r\n\ @param\ nom\ Le\ nom\ du\ fichier\ a\ charger\r\n
 comment1.params=nom
 comment1.target=Grille\ load(java.lang.String)
 numComments=2

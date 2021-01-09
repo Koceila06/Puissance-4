@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=Case
+comment0.text=\r\n\ Enum\u00E9ration\ des\ 3\ valeurs\ possibles\ d'une\ case\ de\ la\ grille\ du\ jeu\r\n
 comment1.params=couleur
 comment1.target=Case(java.lang.String)
 comment2.params=

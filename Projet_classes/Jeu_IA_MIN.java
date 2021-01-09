@@ -1,12 +1,7 @@
-
 import java.io.Serializable ; 
 import java.util.Scanner;
 import java.util.Random ;
- 
 public class Jeu_IA_MIN implements Serializable {
-
-    
-   
     public static void demandeEtJoue2(Grille g, Joueur j){
         Scanner s = new Scanner(System.in);
         boolean valide ;
@@ -16,23 +11,20 @@ public class Jeu_IA_MIN implements Serializable {
         do {
             System.out.println(j.getNom()+ " : entrez le numéro de colonne");
            // r.nextInt(8+1-1)+1
-            if (j.getNom().equals("IA")){colonne = IA.Chois_Colonne(g,j); System.out.println(colonne);}
+            if (j.getNom().equals("a")){colonne =AlphaBeta.calculeColonneAJouer(g,j); System.out.println(colonne);}
             else {colonne = s.nextInt();}
             // Pour les joueur ,la premiere case de la  grille du jeu commence par 1.
             //Mais les indince en java commence par 0 , donc on soustrait "1" du nombre entré.
             colonne--;
             valide=Jeu.Jouer(g,colonne,j);
             if (!valide){System.out.println(" le coup n'est valide");}
-
         }
         while(!valide);}
-
-    // Le coup est valide : on affiche la grille!
-
-    public static void main (String [] args){
+        // Le coup est valide : on affiche la grille!
+        public static void main (String [] args){
         Grille grille = new Grille(6,7);
         Joueur j1 = new Joueur("Humain",Case.X,false);
-        Joueur j2 = new Joueur("IA",Case.O,true);
+        Joueur j2 = new Joueur("a",Case.O,true);
         Grille.Initialiser(grille);
 
         Scanner s = new Scanner(System.in);
@@ -62,7 +54,7 @@ public class Jeu_IA_MIN implements Serializable {
                 System.out.print(tmp.getL()+"*"+tmp.getC()+"  ");
                 for (int l = tmp.getGrille().length-1;l>=0; l--){
                     for(int c =0 ; c < tmp.getGrille()[l].length;c++ ) {
-                        if (tmp.getGrille()[l][c]==Case.X){System.out.print("X");cpt_j1=cpt_j1+1;}
+                        if (tmp.getGrille()[l][c]==Case.X){cpt_j1=cpt_j1+1;}
                         else {if (tmp.getGrille()[l][c]==Case.O)
                             {System.out.print("O");cpt_j2=cpt_j2+1;} }
                     }

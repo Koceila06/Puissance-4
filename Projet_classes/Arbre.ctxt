@@ -1,7 +1,10 @@
 #BlueJ class context
 comment0.target=Arbre
+comment0.text=\r\n\ Arbre\ du\ jeu\r\n
 comment1.params=root
 comment1.target=Arbre(Noeud)
+comment1.text=\r\n\ Constructeur\ surcharg\u00E9\r\n\ @param\ root\ La\ racine\ de\ l'arbre\r\n
 comment2.params=
 comment2.target=Noeud\ getRoot()
+comment2.text=\r\n\ Renvoie\ la\ racine\ de\ l'arbre\r\n
 numComments=3
