@@ -60,6 +60,12 @@ class Grille implements Serializable {
         //laisser d'espace entre les les lignes 
         System.out.println();
         // afficher avec deux boucles for each  
+        System.out.print(" ");
+        for(int i = 1; i<= g.grille[0].length*2+1;i++){
+            System.out.print("_");
+
+        }
+        System.out.println();
         for(Case [] l :g.grille){
             System.out.print(" |");
             for(Case c : l){
@@ -81,12 +87,17 @@ class Grille implements Serializable {
             }
             System.out.println();
         }
-        System.out.print('=');
+        System.out.print(" ");
+        for(int i = 1; i<= g.grille[0].length*2+1;i++){
+            System.out.print("-");
+        }
+        System.out.println();
+        System.out.print(" ");
         for(int i = 1; i<= g.grille[0].length;i++){
             System.out.print("=" + i);
 
         }
-        System.out.println("==");
+        System.out.println("=");
     }
 
     /**
@@ -96,10 +107,11 @@ class Grille implements Serializable {
         g.grille [ligne][colonne]=c;
 
     }
-/**
- * Fait une copie profonde de la grille
- * @g La grille a copié 
- */
+
+    /**
+     * Fait une copie profonde de la grille
+     * @g La grille a copié 
+     */
     public static Grille copy(Grille g){
         Grille g2 = new Grille(6,7);
         for(int i=0;i<6;i++){
@@ -113,11 +125,12 @@ class Grille implements Serializable {
         }
         return g2;
     }
-/**
- * Verifie si la colonne est pleine
- * @param g la grille ou vérifier si la colonne est pleine
- * @param i Le numéro de la colonne a verifier
- */
+
+    /**
+     * Verifie si la colonne est pleine
+     * @param g la grille ou vérifier si la colonne est pleine
+     * @param i Le numéro de la colonne a verifier
+     */
     public static boolean ColonnePleine(Grille g,int i){
         return (!(g.getGrille()[0][i-1] == Case.VIDE));
 

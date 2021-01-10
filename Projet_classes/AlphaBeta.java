@@ -1,7 +1,14 @@
 import java.util.ArrayList;
-
+/**
+ * La classe AlphaBeta contient La profondeur d'exploration et les methodes necessaires pour Calculer Alphabeta
+ * 
+ */
 public class AlphaBeta {
+    // Profondeur d'exploration du jeu 
     private static final int PROFONDEUR_EXPLORATION_ALPHA_BETA =7 ;
+    /**
+     * Renvoi la colonne a jouer
+     */
     public static int calculeColonneAJouer(Grille grille, Joueur joueur){
         ArrayList<Integer> colonnesAJouer = new ArrayList<Integer>();
         for(int i = 0; i <7; i++){
@@ -14,11 +21,11 @@ public class AlphaBeta {
                 if(Jeu.Gagnant(copy,joueur,4)){;return i+1;                                 
                 }
             }
-            }
+        }
         for(int i = 0; i <7; i++){
             Grille copy2 =Grille.copy(grille);
-            if (Jeu.Jouer(copy2,i,IA.inverse(joueur))){
-                if(Jeu.Gagnant(copy2,IA.inverse(joueur),4)){System.out.print("ok3");return i+1; 
+            if (Jeu.Jouer(copy2,i,Minmax.inverse(joueur))){
+                if(Jeu.Gagnant(copy2,Minmax.inverse(joueur),4)){System.out.print("ok3");return i+1; 
                 }
             }
         }
@@ -31,13 +38,13 @@ public class AlphaBeta {
                 break;
             }
         }
-         //On parcours les 7 colonnes 
+        //On parcours les 7 colonnes 
         int  valeurDeJeu = -99999;
         for(int i=0; i <7; i++){
             //On fait une copie de la grille pour ne pas modifier son contenue
             Grille copy = grille.copy(grille);
             if(Jeu.Jouer(copy,i,joueur)){
-               //On appelle la recurence jusqu'a arriver a la profendeur donnee
+                //On appelle la recurence jusqu'a arriver a la profendeur donnee
                 int  valeurDeJeuCourante = alphabeta(copy, joueur, PROFONDEUR_EXPLORATION_ALPHA_BETA);
                 if (valeurDeJeuCourante == valeurDeJeu){
                     //On ajoute le coup jouable
@@ -52,12 +59,13 @@ public class AlphaBeta {
         int numeroDeColonneAJouer = (int) (Math.random() * colonnesAJouer.size());
         return colonnesAJouer.get(numeroDeColonneAJouer)+1;
     }
-    
+
     private static int alphabeta(Grille grille, Joueur joueur, int profondeur){
         int  alpha =-99999;
         int  beta=99999;
         return min(grille, joueur, profondeur, alpha, beta);
     }
+
     /**
      * Applique la partie min, de minmax
      */
@@ -77,9 +85,10 @@ public class AlphaBeta {
             return valeurDeJeu;
         }
         else{
-            return IA.Evaluat(grille);
+            return Minmax.Evaluat(grille);
         }
     }
+
     /**
      * Applique la partie max de minmax
      */
@@ -101,7 +110,7 @@ public class AlphaBeta {
             }
             return valeurDeJeu;
         }else{
-            return IA.Evaluat(grille);
+            return Minmax.Evaluat(grille);
         }
     }
 }

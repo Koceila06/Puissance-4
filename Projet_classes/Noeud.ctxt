@@ -1,19 +1,27 @@
 #BlueJ class context
 comment0.target=Noeud
+comment0.text=\r\n\ La\ classe\ Noeud\ contient\ une\ grille\ ,\ un\ score\ et\ une\ liste\ de\ ses\ fils\r\n\ \r\n
 comment1.params=g\ scr
 comment1.target=Noeud(Grille,\ int)
+comment1.text=\r\n\ Un\ constructeur\ surcharg\u00E9\ \r\n\ @param\ g\ La\ grille\r\n\ @param\ scr\ Le\ score\r\n
 comment2.params=
 comment2.target=boolean\ getFeuille()
 comment3.params=g
 comment3.target=Noeud(Grille)
+comment3.text=\r\n\ Un\ constructeur\ \r\n\ @param\ g\ La\ grille\r\n
 comment4.params=
 comment4.target=Grille\ getGrille_Noeud()
+comment4.text=\r\n\ Renvoi\ la\ grille\r\n
 comment5.params=node
 comment5.target=void\ Add_Fils(Noeud)
+comment5.text=\r\n\ ajoute\ un\ fils\r\n
 comment6.params=
 comment6.target=java.util.ArrayList\ getFils()
+comment6.text=\r\n\ Renvoi\ la\ liste\ des\ fils\ \r\n
 comment7.params=a
 comment7.target=void\ setScore(int)
+comment7.text=\r\n\ modifie\ le\ score\r\n
 comment8.params=
 comment8.target=int\ getScore()
+comment8.text=\r\n\ Renvoi\ le\ score\r\n
 numComments=9

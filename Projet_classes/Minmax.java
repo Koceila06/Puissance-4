@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-class IA{
+class Minmax{
     /**
      * Construit l'Arbre du Jeu et renvoie la racine
      * @param racine La racine de l'Arbre
