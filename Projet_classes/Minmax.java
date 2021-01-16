@@ -7,7 +7,7 @@ class Minmax{
      * @param profendeur La profendeur de l'arbre
      */
     public static Noeud Const_Arbre(Noeud racine,Joueur j,int profendeur){
-       
+
         // Si on est pas arrivé a la derniere profendeur 
         if (profendeur!=1){
             //On parcour les 7 colonne possible
@@ -43,13 +43,9 @@ class Minmax{
                         node=Const_Arbre(node,inverse(j),profendeur-1);
                         //On initalise le Score avec le Max de ses fils si c'est la machine 
                         //le Score de la profendeur sera remonter
-                        if( j.get_IA()==true){ 
-                            node.setScore(Max(node.getFils())); 
 
-                        } else  {  
-                            node.setScore(Min(node.getFils()));               
+                        node.setScore(Max(node.getFils())); 
 
-                        }
 
                     }
                     // Ajoute le Noeud avec son Score a la racine 
@@ -353,6 +349,7 @@ class Minmax{
 
         return Olines - Xlines;
     }
+
     /**
      * Inverse le Joueur courant 
      * @param j Le joueur a inverser

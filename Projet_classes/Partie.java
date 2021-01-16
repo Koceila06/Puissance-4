@@ -30,7 +30,7 @@ class Partie {
             System.out.println () ;
             System.out.println ("      choisir le niveau de difficulté") ; 
             System.out.println ("                 1- IA Simple") ; 
-            System.out.println ("                 2- MinMax") ; 
+            System.out.println ("                 2- IA_max") ; 
             System.out.println ("                 3- Alphabeta") ;
             System.out.println () ;
             for (int i = 0; i < 2 ; i ++)

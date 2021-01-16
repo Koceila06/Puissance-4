@@ -168,7 +168,7 @@ class Jeu implements Serializable {
         // choix represente le type de partie jouer 
         // 1 : Joueur vs Joueur 
         // 2 : Joueur vs IA simple
-        // 3 : Joueur vs IA Minmax
+        // 3 : Joueur vs IA Moyenne
         // 4 : Joueur vs IA alphabeta
 
         if (choix == 1){Joueur humain = new Joueur("Joueur 2",Case.O,false);
