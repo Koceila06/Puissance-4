@@ -24,12 +24,12 @@ Pour jouer,il faut chercher la classe "Partie" et l'exécuter,il y'a deux mode d
 Les joueurs ont la possibilité de choisir la taille de la grille( elle doit impérativement être supérieure à 4 pour les lignes et les colonnes, sinon ça contredirait le principe du jeu), le choix de colonne se fait selon la volonté du joueur à qui est le tour.
 <br/>
 **Humain vs IA :**
-<br/>
 Il y a trois niveaux de difficulté de l'IA:
 <br/>
 1. IA_simple :
 <br/>
 De même que pour humain vs humain, le joueur peut choisir la taille de la grille, le choix de colonne se fait aléatoirement pour l'IA.
+<br/>
 2. IA_max :
 <br/>
 la taille de la grille est fixée( 7 colonnes et 6 lignes), l'IA simule le jeu et attribue un score pour chaque situation tout en dessinant l'arbre du jeu selon la profondeur souhaitée (j'ai choisie la profondeur 5 pour que l'exécution ne soit pas trop longue), l'IA remonte à chaque fois le meilleur score( en utilisant la récurrence) et permet ainsi d'indiquer le meilleur coup à jouer.
