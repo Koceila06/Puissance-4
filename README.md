@@ -18,13 +18,10 @@ couleur. Si, alors que toutes les cases de la grille de jeu sont remplies, aucun
 réalisé un tel alignement, la partie est déclarée nulle
 ## Comment jouer ? 
 Pour jouer,il faut chercher la classe "Partie" et l'exécuter,il y'a deux mode de jeu :
-// Humain vs Humain :
+** Humain vs Humain :
 les joueurs ont la possibilité de choisir la taille de la grille( elle doit impérativement être supérieure à 4 pour les lignes et les colonnes, sinon ça contredirait le principe du jeu), le choix de colonne se fait selon la volonté du joueur à qui est le tour.
 
-// Humain vs IA:
-
-
-
+** Humain vs IA:
 il y a trois niveaux de difficulté de l'IA:
 #IA_simple : de même que pour humain vs humain, le joueur peut choisir la taille de la grille, le choix de colonne se fait aléatoirement pour l'IA.
 
