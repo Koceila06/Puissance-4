@@ -28,8 +28,6 @@ Les joueurs ont la possibilité de choisir la taille de la grille( elle doit imp
 <br/>
 
 **Humain vs IA :**
-
-
 Il y a trois niveaux de difficulté de l'IA:
 <br/>
 1_IA_simple :
