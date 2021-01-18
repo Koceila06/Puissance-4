@@ -25,6 +25,8 @@ réalisé un tel alignement, la partie est déclarée nulle
 <br/>
 Les joueurs ont la possibilité de choisir la taille de la grille( elle doit impérativement être supérieure à 4 pour les lignes et les colonnes, sinon ça contredirait le principe du jeu), le choix de colonne se fait selon la volonté du joueur à qui est le tour.
 <br/>
+<br/>
+
 **Humain vs IA :**
 <br/>
 
