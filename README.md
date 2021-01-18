@@ -17,7 +17,7 @@ premier un alignement (horizontal, vertical ou diagonal) consécutif d'au moins 
 couleur. Si, alors que toutes les cases de la grille de jeu sont remplies, aucun des deux joueurs n'a
 réalisé un tel alignement, la partie est déclarée nulle
 ## Comment jouer ? 
-Pour jouer,il faut chercher la classe "Partie" et l'exécuter,il y'a deux mode de jeu :
+*Pour jouer,il faut chercher la classe "Partie" et l'exécuter,il y'a deux mode de jeu :*
 <br/>
 **Humain vs Humain :** 
 <br/>
@@ -38,6 +38,7 @@ la taille de la grille est fixée( 7 colonnes et 6 lignes), l'IA simule le jeu e
 <br/>
 la taille de la grille est fixée( 7 colonnes et 6 lignes), L'IA choisie la colonne à jouer presque de la même façon que IA max mais en réduisant le nombre de nœuds évalué, permettant ainsi pouvoir choisir une profondeur plus grande et en conséquent avoir une IA plus forte.
 <br/>
-Dans les deux modes de jeu, la partie est automatiquement enregistrée, permettant ainsi aux joueurs de continuer la partie après l'avoir quitté s'ils le souhaitent, sinon rejouer une nouvelle partie.
+<br/>
+*Dans les deux modes de jeu, la partie est automatiquement enregistrée, permettant ainsi aux joueurs de continuer la partie après l'avoir quitté s'ils le souhaitent, sinon rejouer une nouvelle partie.*
 ## Auteur
 Koceila Kemiche
