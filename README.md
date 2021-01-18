@@ -25,7 +25,7 @@ Les joueurs ont la possibilité de choisir la taille de la grille( elle doit imp
 <br/>
 **Humain vs IA :**
 Il y a trois niveaux de difficulté de l'IA:
-1. IA_simple :
+ IA_simple :
 <br/>
 De même que pour humain vs humain, le joueur peut choisir la taille de la grille, le choix de colonne se fait aléatoirement pour l'IA.
 <br/>
