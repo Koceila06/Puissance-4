@@ -4,11 +4,12 @@
  */
 enum Case {
     //Les couleurs peuvent servir pour l'interface
-X("Rouge"),O("Jaune"),VIDE;
-String Couleur;
-Case(String couleur){
-this.Couleur=couleur;
+    X("Rouge"),O("Jaune"),VIDE;
+    String Couleur;
+    Case(String couleur){
+    this.Couleur=couleur;
 }
+    
 Case(){
 
 }
