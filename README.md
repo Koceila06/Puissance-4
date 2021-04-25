@@ -31,17 +31,19 @@ Les joueurs ont la possibilité de choisir la taille de la grille( elle doit imp
 <br/>
 Il y a trois niveaux de difficulté de l'IA:
 <br/>
+<ul>
 
-1_IA_simple :
-<br/>
+<li>IA simple : </li> 
+
 De même que pour humain vs humain, le joueur peut choisir la taille de la grille, le choix de colonne se fait aléatoirement pour l'IA.
-<br/>
-2_IA_max :
-<br/>
+
+<li>IA max :</li>
+
 la taille de la grille est fixée( 7 colonnes et 6 lignes), l'IA simule le jeu et attribue un score pour chaque situation tout en dessinant l'arbre du jeu selon la profondeur souhaitée (j'ai choisie la profondeur 5 pour que l'exécution ne soit pas trop longue), l'IA remonte à chaque fois le meilleur score( en utilisant la récurrence) et permet ainsi d'indiquer le meilleur coup à jouer.
-<br/>
-3_IA_Alpha-Beta :
-<br/>
+
+<li>IA Alpha-Beta :</li>
+</ul>
+
 la taille de la grille est fixée( 7 colonnes et 6 lignes), L'IA choisie la colonne à jouer presque de la même façon que IA max mais en réduisant le nombre de nœuds évalué, permettant ainsi pouvoir choisir une profondeur plus grande et en conséquent avoir une IA plus forte.
 <br/>
 <br/>
