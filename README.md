@@ -45,7 +45,7 @@ la taille de la grille est fixée( 7 colonnes et 6 lignes), l'IA simule le jeu e
 
 
 la taille de la grille est fixée( 7 colonnes et 6 lignes), L'IA choisie la colonne à jouer presque de la même façon que IA max mais en réduisant le nombre de nœuds évalué, permettant ainsi pouvoir choisir une profondeur plus grande et en conséquent avoir une IA plus forte.
-<\ul>
+</ul>
 <br/>
 <br/>
 *Dans les deux modes de jeu, la partie est automatiquement enregistrée, permettant ainsi aux joueurs de continuer la partie après l'avoir quitté s'ils le souhaitent, sinon rejouer une nouvelle partie.*
